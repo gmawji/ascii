@@ -37,7 +37,7 @@ class Handler(webapp2.RequestHandler):
 
 class MainHandler(Handler):
     def render_front(self, title="", art="", error=""):
-        self.renter("front.html", title=title, art=art, error=error)
+        self.render("front.html", title=title, art=art, error=error)
 
     def get(self):
         self.render_front()
