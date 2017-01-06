@@ -36,8 +36,11 @@ class Handler(webapp2.RequestHandler):
         self.write(self.render_str(template, **kw))
 
 class MainHandler(Handler):
+    def render_front(self, title="", art="", error=""):
+        self.renter("front.html", title=title, art=art, error=error)
+
     def get(self):
-        self.render("front.html")
+        self.render_front()
 
     def post(self):
         title = self.request.get("title")
@@ -47,7 +50,7 @@ class MainHandler(Handler):
             self.write("thanks")
         else:
             error = "we need both a title and some artwork!"
-            self.render("front.html", error = error)
+            self.render_front(error = error)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
