@@ -50,7 +50,7 @@ class MainHandler(Handler):
             self.write("thanks")
         else:
             error = "we need both a title and some artwork!"
-            self.render_front(error = error)
+            self.render_front(title, art, error)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
